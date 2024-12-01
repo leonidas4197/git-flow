@@ -1,51 +1,73 @@
-from operaciones import sumar, restar, multiplicar, dividir, factorial_iterativo
+from operaciones import sumar, restar, multiplicar, dividir, factorial_iterativo, factorial_recursivo
 
 def mostrar_menu():
-    print("Menú de operaciones:")
-    print("1 - Sumar")
-    print("2 - Restar")
-    print("3 - Multiplicar")
-    print("4 - Dividir")
-    print("5 - Salir")
-    print("6 - Calcular el factorial de un número (iterativo)")
-    
-    opcion = int(input("Elija una opción: "))
-    
-    if opcion == 1:
-        valor1 = float(input("Ingrese el primer valor: "))
-        valor2 = float(input("Ingrese el segundo valor: "))
-        resultado = sumar(valor1, valor2)
-        print(f"Resultado de la suma: {resultado}")
+    print("1- Sumar")
+    print("2- Restar")
+    print("3- Multiplicar")
+    print("4- Dividir")
+    print("5- Salir")
+    print("6- Calcular el factorial de un número (iterativo)")
+    print("7- Calcular el factorial de un número (recursivo)")  # El número se ha cambiado a 7
 
-    elif opcion == 2:
-        valor1 = float(input("Ingrese el primer valor: "))
-        valor2 = float(input("Ingrese el segundo valor: "))
-        resultado = restar(valor1, valor2)
-        print(f"Resultado de la resta: {resultado}")
-
-    elif opcion == 3:
-        valor1 = float(input("Ingrese el primer valor: "))
-        valor2 = float(input("Ingrese el segundo valor: "))
-        resultado = multiplicar(valor1, valor2)
-        print(f"Resultado de la multiplicación: {resultado}")
-
-    elif opcion == 4:
-        valor1 = float(input("Ingrese el primer valor: "))
-        valor2 = float(input("Ingrese el segundo valor: "))
-        resultado = dividir(valor1, valor2)
-        print(f"Resultado de la división: {resultado}")
-
-    elif opcion == 6:
-        valor = int(input("Ingrese un número para calcular el factorial: "))
-        resultado = factorial_iterativo(valor)
-        print(f"El factorial de {valor} es: {resultado}")
-
-    elif opcion == 5:
-        print("Saliendo del programa...")
-
-    else:
-        print("Opción no válida. Intente de nuevo.")
-
-if __name__ == "__main__":
+def main():
     while True:
         mostrar_menu()
+        opcion = input("Selecciona una opción: ")
+
+        if opcion == '1':
+            try:
+                a = float(input("Introduce el primer número: "))
+                b = float(input("Introduce el segundo número: "))
+                print("Resultado:", sumar(a, b))
+            except ValueError:
+                print("Error: Ambos valores deben ser números.")
+
+        elif opcion == '2':
+            try:
+                a = float(input("Introduce el primer número: "))
+                b = float(input("Introduce el segundo número: "))
+                print("Resultado:", restar(a, b))
+            except ValueError:
+                print("Error: Ambos valores deben ser números.")
+
+        elif opcion == '3':
+            try:
+                a = float(input("Introduce el primer número: "))
+                b = float(input("Introduce el segundo número: "))
+                print("Resultado:", multiplicar(a, b))
+            except ValueError:
+                print("Error: Ambos valores deben ser números.")
+
+        elif opcion == '4':
+            try:
+                a = float(input("Introduce el dividendo: "))
+                b = float(input("Introduce el divisor: "))
+                print("Resultado:", dividir(a, b))
+            except ZeroDivisionError:
+                print("Error: No se puede dividir entre 0.")
+            except ValueError:
+                print("Error: Ambos valores deben ser números.")
+
+        elif opcion == '6':
+            try:
+                n = int(input("Introduce un número para calcular su factorial (iterativo): "))
+                print("Resultado:", factorial_iterativo(n))
+            except ValueError:
+                print("Error: Debes introducir un número entero.")
+
+        elif opcion == '7':
+            try:
+                n = int(input("Introduce un número para calcular su factorial (recursivo): "))
+                print("Resultado:", factorial_recursivo(n))
+            except ValueError:
+                print("Error: Debes introducir un número entero.")
+
+        elif opcion == '5':
+            print("Saliendo del programa.")
+            break
+
+        else:
+            print("Opción no válida. Por favor, elige una opción del menú.")
+
+if __name__ == "__main__":
+    main()
